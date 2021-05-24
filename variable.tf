@@ -22,5 +22,4 @@ variable "tags" {
   default = {  
     Name = "webserver"  
 }  
-}  
-~               
+}     
