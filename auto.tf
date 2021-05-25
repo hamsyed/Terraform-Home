@@ -2,7 +2,8 @@ resource "aws_autoscaling_group" "web_auto" {
   name                 = "web_scaling"
   availability_zones        = ["us-east-1a"]
   launch_configuration = "${aws_launch_configuration.apache-webserver.name}"
-  load_balancers = [ aws_elb.web-elb.name ]
+  # the loadbalancer must be created before the below step
+  load_balancers = ["${aws_elb.web-elb.name}"]
   health_check_type = "ELB"
   health_check_grace_period = 300
   min_size             = 1
