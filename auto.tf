@@ -2,6 +2,7 @@ resource "aws_autoscaling_group" "web_auto" {
   name                 = "web_scaling"
   availability_zones        = ["us-east-1a"]
   launch_configuration = "${aws_launch_configuration.apache-webserver.name}"
+  health_check_grace_period = 3000
   min_size             = 1
   max_size             = 2
 
