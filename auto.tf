@@ -15,6 +15,7 @@ resource "aws_autoscaling_group" "web_auto" {
 resource "aws_autoscaling_policy" "cpu_utilization" {
   name = "cpu_utilization"
   autoscaling_group_name = "${aws_autoscaling_group.web_auto.name}"
+  policy_type = "TargetTrackingScaling"
 
   target_tracking_configuration {
     predefined_metric_specification {
