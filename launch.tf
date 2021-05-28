@@ -2,6 +2,7 @@ resource "aws_launch_configuration" "apache-webserver" {
   name = "webserver"
   image_id      = "ami-0d5eff06f840b45e9"
   instance_type = "${var.instance_type}"
+  security_groups=["${aws_security_group.allow_http.id}"]
   associate_public_ip_address = "true"
   key_name = "terraform.pem" 
   user_data = "${file("bash.sh")}"
