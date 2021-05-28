@@ -4,7 +4,8 @@ resource "aws_launch_configuration" "apache-webserver" {
   instance_type = "${var.instance_type}"
   security_groups=["${aws_security_group.allow_http.id}"]
   associate_public_ip_address = "true"
-  key_name = "terraform.pem" 
+  #this should be the key name that u have created while launching ec2
+  key_name = "terraform" 
   user_data = "${file("bash.sh")}"
 
   provisioner "local-exec" {
